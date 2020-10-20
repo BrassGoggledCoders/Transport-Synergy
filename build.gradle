@@ -77,10 +77,11 @@ sourceSets {
 }
 
 def version_properties = [
-        "version"       : version,
-        "mc_version"    : minecraft_version,
-        "forge_version" : min_forge_version,
-        "loader_version": loader_version
+        "version"          : version,
+        "mc_version"       : minecraft_version,
+        "forge_version"    : min_forge_version,
+        "loader_version"   : loader_version,
+        "transport_version": min_transport_version
 ]
 
 processResources {
@@ -130,7 +131,7 @@ minecraft {
 
             args '--all', '--output', file('src/generated/resources/'),
                     '--reports',
-                    '--mod', 'transport', '--existing', sourceSets.main.resources.srcDirs[0]
+                    '--mod', 'transport_synergy', '--existing', sourceSets.main.resources.srcDirs[0]
 
             mods {
                 transport_synergy {
@@ -147,7 +148,7 @@ configurations {
 
 shadowJar {
     configurations = [project.configurations.shade]
-    relocate 'com.tterrag.registrate', 'xyz.brassgoggledcoders.transport.repack.registrate'
+    relocate 'com.tterrag.registrate', 'xyz.brassgoggledcoders.transportsynergy.repack.registrate'
     classifier ''
 }
 
@@ -186,7 +187,7 @@ dependencies {
     compileOnly fg.deobf("de.ellpeck.naturesaura:NaturesAura:${natures_aura_version}:api")
     runtimeOnly fg.deobf("de.ellpeck.naturesaura:NaturesAura:${natures_aura_version}")
 
-    compile fg.deobf("xyz.brassgoggledcoders:Transport:${transport_version}")
+    compile fg.deobf("xyz.brassgoggledcoders:Transport:${transport_version}:nodep")
 
     testImplementation('org.junit.jupiter:junit-jupiter:5.6.1')
 }

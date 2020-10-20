@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[${loader_version},)"
+issueTrackerURL="https://github.com/Brass-Goggled-Coders/Transport%20Synergy/issues"
+license="MIT"
+
+[[mods]]
+    modId="transport_synergy"
+    version="${version}"
+    displayName="Transport Synergy"
+    authors="SkySom"
+    description='''
+    '''
+
+[[dependencies.transport_synergy]]
+    modId="forge"
+    mandatory=true
+    versionRange="[${forge_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.transport_synergy]]
+    modId="transport"
+    mandatory=true
+    versionRange="[${transport_version},)"
+    ordering="NONE"
+    side="BOTH"
