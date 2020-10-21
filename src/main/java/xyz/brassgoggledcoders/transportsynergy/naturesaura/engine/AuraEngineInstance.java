@@ -45,7 +45,7 @@ public class AuraEngineInstance extends EngineModuleInstance {
                     BlockPos position = this.getModularEntity().getSelf().getPosition();
                     burnTime = this.getModularEntity().getTheWorld().getChunkAt(position)
                             .getCapability(NaturesAuraAPI.capAuraChunk)
-                            .map(auraChunk -> auraChunk.drainAura(position, 500) / 25)
+                            .map(auraChunk -> auraChunk.drainAura(position, 500))
                             .orElse(0);
                 }
             }

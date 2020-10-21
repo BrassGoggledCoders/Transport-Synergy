@@ -10,7 +10,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import xyz.brassgoggledcoders.transport.Transport;
 import xyz.brassgoggledcoders.transport.registrate.TransportRegistrate;
 import xyz.brassgoggledcoders.transportsynergy.naturesaura.TransportNaturesAura;
-import xyz.brassgoggledcoders.transportsynergy.util.ItemGroupHelper;
 import xyz.brassgoggledcoders.transportsynergy.util.SynergyCompat;
 
 import java.util.Map;
@@ -22,7 +21,7 @@ public class TransportSynergy {
 
     private static final NonNullLazy<TransportRegistrate> REGISTRATE = NonNullLazy.of(() ->
             TransportRegistrate.create(ID)
-                    .itemGroup(() -> ItemGroupHelper.getFirstByModID(Transport.ID))
+                    .itemGroup(Transport.ITEM_GROUP::get)
     );
 
     private final Map<String, SynergyCompat> synergyCompat = Maps.newHashMap();
