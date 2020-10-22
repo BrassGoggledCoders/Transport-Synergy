@@ -1,6 +1,7 @@
 package xyz.brassgoggledcoders.transportsynergy;
 
 import com.google.common.collect.Maps;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.NonNullLazy;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
@@ -27,6 +28,8 @@ public class TransportSynergy {
     private final Map<String, SynergyCompat> synergyCompat = Maps.newHashMap();
 
     public TransportSynergy() {
+        Transport.setupRegistries();
+
         this.registerSynergyCompat("naturesaura", () -> TransportNaturesAura::new);
         this.synergyCompat.values().forEach(SynergyCompat::construct);
 
@@ -46,5 +49,9 @@ public class TransportSynergy {
 
     public static TransportRegistrate getRegistrate() {
         return REGISTRATE.get();
+    }
+
+    public static ResourceLocation rl(String path) {
+        return new ResourceLocation(ID, path);
     }
 }

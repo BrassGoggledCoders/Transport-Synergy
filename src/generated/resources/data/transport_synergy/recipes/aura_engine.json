@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:dusts/redstone"
+    },
+    {
+      "item": "naturesaura:aura_bottle"
+    },
+    {
+      "item": "naturesaura:infused_iron"
+    },
+    {
+      "item": "naturesaura:infused_iron"
+    }
+  ],
+  "result": {
+    "item": "transport_synergy:aura_engine"
+  }
+}
