@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "transport_synergy:item/aura_attraction_side",
+    "end": "transport_synergy:item/aura_attraction_end"
+  }
+}

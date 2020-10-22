@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EBE",
+    "S S",
+    "XIX"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "B": {
+      "type": "forge:nbt",
+      "item": "naturesaura:aura_bottle",
+      "count": 1,
+      "nbt": "{stored_type:\"naturesaura:end\"}"
+    },
+    "S": {
+      "item": "naturesaura:sky_ingot"
+    },
+    "I": {
+      "item": "naturesaura:infused_iron"
+    },
+    "X": {
+      "item": "naturesaura:infused_brick"
+    }
+  },
+  "result": {
+    "item": "transport_synergy:aura_attraction"
+  }
+}
