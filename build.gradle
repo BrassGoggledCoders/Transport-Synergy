@@ -148,7 +148,7 @@ configurations {
 
 shadowJar {
     configurations = [project.configurations.shade]
-    relocate 'com.tterrag.registrate', 'xyz.brassgoggledcoders.transportsynergy.repack.registrate'
+    relocate 'com.tterrag.registrate', 'xyz.brassgoggledcoders.transport.repack.registrate'
     classifier ''
 }
 
