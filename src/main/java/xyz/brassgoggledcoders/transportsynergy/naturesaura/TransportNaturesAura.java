@@ -32,13 +32,17 @@ public class TransportNaturesAura extends SynergyCompat {
             .engineModule(AuraEngineInstance::new)
             .lang("Aura Engine")
             .item("aura_engine")
-            .recipe((context, provider) -> ShapelessRecipeBuilder.shapelessRecipe(context.get())
-                    .addIngredient(Tags.Items.DUSTS_REDSTONE)
-                    .addIngredient(getNAItem("aura_bottle"))
-                    .addIngredient(getNAItem("infused_iron"))
-                    .addIngredient(getNAItem("infused_iron"))
-                    .addCriterion("has_item", RegistrateRecipeProvider.hasItem(getNAItem("aura_bottle")))
-                    .build(provider)
+            .recipe((context, provider) -> {
+                        ItemStack auraBottle = new ItemStack(getNAItem("aura_bottle"));
+                        auraBottle.setTagInfo("stored_type", StringNBT.valueOf(NA_ID + ":overworld"));
+                        ShapelessRecipeBuilder.shapelessRecipe(context.get())
+                                .addIngredient(Tags.Items.DUSTS_REDSTONE)
+                                .addIngredient(new ActualNBTIngredient(auraBottle))
+                                .addIngredient(getNAItem("infused_iron"))
+                                .addIngredient(getNAItem("infused_iron"))
+                                .addCriterion("has_item", RegistrateRecipeProvider.hasItem(getNAItem("aura_bottle")))
+                                .build(provider);
+                    }
             )
             .build()
             .register();
