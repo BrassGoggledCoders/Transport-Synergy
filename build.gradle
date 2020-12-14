@@ -148,7 +148,8 @@ configurations {
 
 shadowJar {
     configurations = [project.configurations.shade]
-    relocate 'com.tterrag.registrate', 'xyz.brassgoggledcoders.transport.repack.registrate'
+    relocate 'com.tterrag.registrate', 'xyz.brassgoggledcoders.transportsynergy.repack.registrate'
+    relocate 'xyz.brassgoggledcoder.transport.registrate', 'xyz.brassgoggledcoders.transportsynergy.repack.transport'
     classifier ''
 }
 
@@ -161,13 +162,10 @@ build.dependsOn reobfShadowJar
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    if (findProject(':Titanium') != null) {
-        compile project(':Titanium')
-    } else {
-        compile fg.deobf(project.dependencies.create("com.hrznstudio:titanium:${minecraft_version}-${titanium_version}") {
-            transitive = false
-        })
-    }
+    compile fg.deobf(project.dependencies.create("com.hrznstudio:titanium:${minecraft_version}-${titanium_version}") {
+        transitive = false
+    })
+
     def registrate = "com.tterrag.registrate:Registrate:MC1.16.2-${registrate_version}"
     implementation fg.deobf(registrate)
     shade registrate
@@ -187,6 +185,10 @@ dependencies {
 
     compileOnly fg.deobf("de.ellpeck.naturesaura:NaturesAura:${natures_aura_version}:api")
     runtimeOnly fg.deobf("de.ellpeck.naturesaura:NaturesAura:${natures_aura_version}")
+
+    def transportRegistrate = "xyz.brassgoggledcoders:Transport:${transport_version}:registrate"
+    implementation fg.deobf(transportRegistrate)
+    shade transportRegistrate
 
     compile fg.deobf("xyz.brassgoggledcoders:Transport:${transport_version}:nodep")
 
