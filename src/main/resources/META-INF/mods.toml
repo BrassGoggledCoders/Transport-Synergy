@@ -21,6 +21,6 @@ license="MIT"
 [[dependencies.transport_synergy]]
     modId="transport"
     mandatory=true
-    versionRange="[${transport_version},)"
+    versionRange="[${min_transport_version},)"
     ordering="NONE"
     side="BOTH"

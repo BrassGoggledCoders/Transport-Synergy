@@ -81,7 +81,7 @@ def version_properties = [
         "mc_version"       : minecraft_version,
         "forge_version"    : min_forge_version,
         "loader_version"   : loader_version,
-        "transport_version": min_transport_version
+        "min_transport_version": min_transport_version
 ]
 
 processResources {
