@@ -77,10 +77,10 @@ sourceSets {
 }
 
 def version_properties = [
-        "version"          : version,
-        "mc_version"       : minecraft_version,
-        "forge_version"    : min_forge_version,
-        "loader_version"   : loader_version,
+        "version"              : version,
+        "mc_version"           : minecraft_version,
+        "forge_version"        : min_forge_version,
+        "loader_version"       : loader_version,
         "min_transport_version": min_transport_version
 ]
 
@@ -162,13 +162,19 @@ build.dependsOn reobfShadowJar
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compile fg.deobf(project.dependencies.create("com.hrznstudio:titanium:${minecraft_version}-${titanium_version}") {
+    compile(fg.deobf("com.hrznstudio:titanium:${minecraft_version}-${titanium_version}")) {
         transitive = false
-    })
+    }
 
     def registrate = "com.tterrag.registrate:Registrate:MC1.16.2-${registrate_version}"
     implementation fg.deobf(registrate)
     shade registrate
+
+    def transportRegistrate = "xyz.brassgoggledcoders:Transport:${transport_version}:registrate"
+    implementation fg.deobf(transportRegistrate)
+    shade(transportRegistrate) {
+        transitive = false
+    }
 
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
@@ -185,10 +191,6 @@ dependencies {
 
     compileOnly fg.deobf("de.ellpeck.naturesaura:NaturesAura:${natures_aura_version}:api")
     runtimeOnly fg.deobf("de.ellpeck.naturesaura:NaturesAura:${natures_aura_version}")
-
-    def transportRegistrate = "xyz.brassgoggledcoders:Transport:${transport_version}:registrate"
-    implementation fg.deobf(transportRegistrate)
-    shade transportRegistrate
 
     compile fg.deobf("xyz.brassgoggledcoders:Transport:${transport_version}:nodep")
 
