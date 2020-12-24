@@ -148,8 +148,7 @@ configurations {
 
 shadowJar {
     configurations = [project.configurations.shade]
-    relocate 'com.tterrag.registrate', 'xyz.brassgoggledcoders.transportsynergy.repack.registrate'
-    relocate 'xyz.brassgoggledcoder.transport.registrate', 'xyz.brassgoggledcoders.transportsynergy.repack.transport'
+    relocate 'com.tterrag.registrate', 'xyz.brassgoggledcoders.transport.repack.registrate'
     classifier ''
 }
 
@@ -172,9 +171,7 @@ dependencies {
 
     def transportRegistrate = "xyz.brassgoggledcoders:Transport:${transport_version}:registrate"
     implementation fg.deobf(transportRegistrate)
-    shade(transportRegistrate) {
-        transitive = false
-    }
+    compile fg.deobf(transportRegistrate)
 
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
